@@ -1,0 +1,62 @@
+
+#menu nav
+{margin-top:45px;
+padding:none;
+box-shadow:none;
+//margin-left:0px;
+border:none;
+border-radius:none;
+}
+#menu_1
+{
+color:#238200;
+padding-top:50px;
+}
+#menu a
+{color:green;
+margin-left:10px;
+}
+#menu img
+{width:200px;
+ margin-top:-50px;
+}
+#menu .nav a:hover
+{
+color:#3acf03;
+}
+#menu form
+{border:none;
+box-shadow:none;
+}
+#carousel-example-generic img
+{height:500px;
+width:100%;
+margin-top:-5px;
+}
+#content
+{min-height:700px;
+}
+#left
+{background:lightcyan;
+min-height:700px;
+}
+#right
+{background:lightblue;
+min-height:700px;
+}
+#footer
+{min-height:75px;
+background:black;
+margin-top:10px;
+}
+
+#lfoot
+{min-height:75px;
+}
+#rfoot
+{min-height:75px;
+}
+#lfoot i
+{margin-left:25px;
+padding:10px;
+}

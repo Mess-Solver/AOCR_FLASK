@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>AOCR</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style_u.css') }}">
+
+	<meta charset="UTF-8">
+    <title>HCR</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="{{ url_for('static',filename='js/jquery.js') }}" rel="javascript" type="text/javascript"></script>
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/bootstrap-theme.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static' ,filename='css/font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
+    <script src="{{ url_for('static' ,filename='js/bootstrap.min.js') }}" rel="javascript" style="text/javascript"></script>
+    <link href="{{ url_for('static',filename='css/menu.css') }}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style_l.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_u.css') }}">
+    <script>
+        function myFunction() {
+              var x = document.getElementById("first");
+              var y =document.getElementById("second");
+              var y1 =document.getElementById("second1");
+              var z =document.getElementById("third");
+              x.style.display = "none";
+              y.style.display = "block";
+              y1.style.display = "block";
+              setTimeout(infunc, 10000)
+                               }
+        function infunc(){var y =document.getElementById("second");
+                          var y1 =document.getElementById("second1");
+                          var z =document.getElementById("third");
+                          var z1 =document.getElementById("third1");
+                          var z2 =document.getElementById("third2");
+                          y.style.display = "none";
+                          y1.style.display = "none";
+                          z.style.display="block";
+                          z1.style.display="block";
+                          z2.style.display="block"
+                          }
+
+
+
+    </script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="first"  class="container jumbotron">
+
+    <h1>Image Preview</h1>
+{% if img_src %}
+<div  style="height:400px; width:500px; margin:auto;" >
+    <img style="max-width: 100%; box-shadow:5px,10px; max-height:100%; margin: 0px auto" src="{{ img_src }}"/>
+</div>
+{% endif %}
+    <div style="" id="jumbotron">
+    <h3 style="margin:auto" >Do you want to proceed with this image ?</h3><br><br>
+    <form method=post enctype=multipart/form-data>
+
+        <p><a style="background:#595959; color:white; border:none;" class="btn btn-primary btn-lg" onclick="myFunction()" role="button">EXTRACT TEXT</a></p>
+	</form>
+     </div>
+</div>
+
+
+<div id="second"  style="display:none;" class='loader' >
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+
+</div>
+<div id="second1"  style="display:none;" style="background:#808080" class="jumbotron">
+<h1>LOADING...     </h1>
+</div>
+
+
+
+<div style="display:none" id="third">
+
+    <div class="jumbotron">
+     <h1 style="">Image Processed Successfully</h1><br>
+    {% if img_src %}
+    </div>
+    <div  style="height:400px; width:500px; margin-top:20px; margin:auto;" >
+        <img style="max-width: 100%;  max-height:100%; margin: 0px auto" src="{{ img_src }}"/>
+    </div>
+    {% endif %}
+</div>
+<div id="third1"  style="display:none; background:black; color:white" class="jumbotron">
+    {% if extracted_text %}
+
+    <h3 style=""> The Text Extracted from the image above is :  </h3>
+
+  <div class="form-group">
+  <form action="/aud" method="post">
+  <label for="exampleFormControlTextarea1">EXTRACTED TEXT</label>
+  <center><textarea readonly autofocus style=" resize:none; text-align: center;  width: 750px; font-size:20px;" class="form-control rounded-0" name="text" id="exampleFormControlTextarea1" rows="5" cols="10">{{ extracted_text }}</textarea>
+      <br><br>
+      <input type="text" name="language" hidden value="{{ language }}">
+      <input style=" background:#595959; color:white; border:none;" class="btn btn-primary btn-lg"  type="submit" value="Listen Audio">
+  </center>
+  </form>
+  </div>
+
+
+    {% else %}
+
+      No Text Detected
+
+    {% endif %}
+</div>
+<div style="display:none; background:transparent;" id="third2" class="jumbotron">
+    <a style=" background:#595959; color:white; border:none;" class="btn btn-primary btn-lg" href="/" role="button">Home Page</a>
+</div>
+    <!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.1.5/trianglify.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js'></script><script  src="{{url_for('static', filename='js/script_u.js')}}"></script>
+
+</body>
+</html>

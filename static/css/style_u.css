@@ -1,0 +1,12 @@
+html,body{
+  height:100%;
+  overflow: visible
+}
+body{
+  background:#E1D38A;
+  background-size:cover;
+  font-family:sans-serif;
+  text-align:center;
+
+}
+

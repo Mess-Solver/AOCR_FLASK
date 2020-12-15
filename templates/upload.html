@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>AOCR</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style_u.css') }}">
+
+	<meta charset="UTF-8">
+    <title>AOCR</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="{{ url_for('static',filename='js/jquery.js') }}" rel="javascript" type="text/javascript"></script>
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/bootstrap-theme.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static' ,filename='css/font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
+    <script src="{{ url_for('static' ,filename='js/bootstrap.min.js') }}" rel="javascript" style="text/javascript"></script>
+
+
+    <script>
+    function fileValidation(){
+    var fileInput = document.getElementById('file');
+    var filePath = fileInput.value;
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+    if(!allowedExtensions.exec(filePath)){
+        alert('Please upload file having extensions .jpeg/.jpg/.png/.gif only.');
+        fileInput.value = '';
+        return false;
+    }
+    else{
+
+        //Image preview
+         }
+}
+</script>
+
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+{% if msg %}
+
+<h1 style="width:500px; margin-bottom:100px" class="alert alert-danger" role="alert">{{ msg }}</h1>
+{% endif %}
+
+<div style="background:transparent;margin-top:100px" id="myDIV" class="inner jumbotron">
+    <h1 style="color:#FFF; font-family:sans-serif;">Upload An Image To Be Processed</h1> <br><br>
+
+    <form method=post enctype=multipart/form-data action="/preview">
+ <center>  <select style="width:200px;" name="lang" class="form-control">
+          <option value="eng">English</option>
+          <option value="hin">Hindi</option>
+          </select>
+  </center><br><br>
+       <center> <input class="btn btn-primary btn-lg" id="file" onchange="return fileValidation()" type="file" required  name="file"> </center><br><br>
+
+        <input class="btn btn-primary btn-lg"  type="submit" value="Upload">
+
+    </form>
+</div>
+
+
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.1.5/trianglify.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js'></script>
+<script  src="{{url_for('static', filename='js/script_u.js')}}"></script>
+
+</body>
+</html>
